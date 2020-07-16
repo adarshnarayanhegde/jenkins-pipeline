@@ -23,7 +23,7 @@ pipeline {
 		stage('Build') {
 			steps {
 				//  sh 'mvn -B -DskipTests clean install'
-				sh 'maven --version'
+				sh 'mvn --version'
 				sh 'docker version'
 				echo "Build"
 				echo "PATH - $PATH"
