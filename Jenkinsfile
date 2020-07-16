@@ -8,16 +8,26 @@
 // }
 
 pipeline {
-	// agent any
-	agent {docker { 
-		image 'maven:3-alpine'
-        args '-u root'
-		}
+	agent any
+	// agent {docker { 
+	// 	image 'maven:3-alpine'
+    //     args '-u root'
+	// 	}
+	// }
+	environment {
+		dockerHome = tool 'myDocker'
+		mavenHome = tool 'myMaven'
 	}
 	stages {
 		stage('Build') {
 			steps {
-				 sh 'mvn -B -DskipTests clean install'
+				//  sh 'mvn -B -DskipTests clean install'
+				sh 'maven --version'
+				sh 'docker version'
+				echo "Build"
+				echo "PATH - $PATH"
+				echo "BUILD_NUMBER - $env.BUILD_NUMBER"
+
 			}
 		}
 
