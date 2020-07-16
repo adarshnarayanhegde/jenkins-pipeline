@@ -28,4 +28,16 @@ pipeline {
 			}
 		}
 	}
+
+	post {
+		always {
+			echo "Always runs"
+		}
+		success {
+			echo "Run on success"
+		}
+		failure {
+			echo "run on failure"
+		}
+	}
 }
